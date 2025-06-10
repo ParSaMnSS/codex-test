@@ -17,7 +17,7 @@ This repository contains a basic full stack example using **Next.js**, **React**
 npm install
 ```
 
-2. Configure database connection via environment variables:
+2. Ensure a MySQL server is running and configure the connection via environment variables:
 
 - `DB_HOST`
 - `DB_USER`

@@ -9,6 +9,15 @@ interface User {
 export default function Admin() {
   const [users, setUsers] = useState<User[]>([])
   const [showRedBox, setShowRedBox] = useState(false)
+  const [modern, setModern] = useState(true)
+
+
+  useEffect(() => {
+    if (!saved) return
+    const t = setTimeout(() => setSaved(false), 2000)
+    return () => clearTimeout(t)
+  }, [saved])
+
   const [saved, setSaved] = useState(false)
   const router = useRouter()
 
@@ -44,6 +53,7 @@ export default function Admin() {
   return (
     <div className="p-8 space-y-6">
       <h1 className="text-2xl font-bold">Admin</h1>
+
       <div>
         <label className="flex items-center space-x-2">
           <input type="checkbox" checked={showRedBox} onChange={toggleRedBox} />

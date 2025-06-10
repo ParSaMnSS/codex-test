@@ -1,10 +1,25 @@
+<<<<<<< HEAD
+import { useState, useEffect } from 'react'
+=======
 import { useState } from 'react'
+>>>>>>> origin/main
 import { useRouter } from 'next/router'
 
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const router = useRouter()
+<<<<<<< HEAD
+  const [modern, setModern] = useState(true)
+
+  useEffect(() => {
+    fetch('/api/settings')
+      .then((res) => res.json())
+      .then((data) => setModern(data.modernDesign !== false))
+      .catch(() => setModern(true))
+  }, [])
+=======
+>>>>>>> origin/main
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -21,7 +36,17 @@ export default function Login() {
   }
 
   return (
+<<<<<<< HEAD
+    <div
+      className={
+        modern
+          ? 'p-8 max-w-md mx-auto bg-white shadow rounded'
+          : 'p-8 max-w-md mx-auto'
+      }
+    >
+=======
     <div className="p-8 max-w-md mx-auto">
+>>>>>>> origin/main
       <h1 className="text-2xl font-bold mb-4">Log In</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
