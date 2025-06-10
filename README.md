@@ -37,3 +37,5 @@ To build the project for production use:
 ```bash
 npm run build
 ```
+
+The database named in `DB_NAME` will be created automatically if it does not exist.

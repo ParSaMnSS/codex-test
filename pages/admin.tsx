@@ -38,6 +38,9 @@ export default function Admin() {
     if (res.ok) {
       setShowRedBox(newVal)
       setSaved(true)
+    } else {
+      const data = await res.json().catch(() => null)
+      alert(data?.message || 'Failed to update setting')
     }
   }
 

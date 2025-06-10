@@ -16,7 +16,8 @@ export default function Signup() {
     if (res.ok) {
       router.push('/login')
     } else {
-      alert('Signup failed')
+      const data = await res.json().catch(() => null)
+      alert(data?.message || 'Signup failed')
     }
   }
 
