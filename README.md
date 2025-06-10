@@ -37,5 +37,3 @@ To build the project for production use:
 ```bash
 npm run build
 ```
-
-The build step requires the dependencies installed with `npm install`.
