@@ -10,6 +10,8 @@ export default function Admin() {
   const [users, setUsers] = useState<User[]>([])
   const [showRedBox, setShowRedBox] = useState(false)
   const [modern, setModern] = useState(true)
+
+
   const [saved, setSaved] = useState(false)
   const router = useRouter()
 
@@ -26,49 +28,32 @@ export default function Admin() {
 
     fetch('/api/settings')
       .then((res) => res.json())
-      .then((data) => {
-        setShowRedBox(!!data.showRedBox)
-        setModern(data.modernDesign !== false)
-      })
+      .then((data) => setShowRedBox(!!data.showRedBox))
   }, [router])
 
-  async function updateSetting(key: string, value: boolean) {
+  async function toggleRedBox() {
+    const newVal = !showRedBox
     const res = await fetch('/api/settings?admin=true', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ [key]: value }),
+      body: JSON.stringify({ showRedBox: newVal }),
     })
     if (res.ok) {
-      if (key === 'showRedBox') setShowRedBox(value)
-      if (key === 'modernDesign') setModern(value)
+      setShowRedBox(newVal)
       setSaved(true)
-    } else {
-      const data = await res.json().catch(() => null)
-      alert(data?.message || 'Failed to update setting')
     }
   }
 
   return (
     <div className="p-8 space-y-6">
       <h1 className="text-2xl font-bold">Admin</h1>
-      <div className="space-y-2">
+
+      <div>
         <label className="flex items-center space-x-2">
-          <input
-            type="checkbox"
-            checked={showRedBox}
-            onChange={() => updateSetting('showRedBox', !showRedBox)}
-          />
+          <input type="checkbox" checked={showRedBox} onChange={toggleRedBox} />
           <span>Show red box on About page</span>
         </label>
-        <label className="flex items-center space-x-2">
-          <input
-            type="checkbox"
-            checked={modern}
-            onChange={() => updateSetting('modernDesign', !modern)}
-          />
-          <span>Enable modern design</span>
-        </label>
-        {saved && <span className="text-green-600">Saved!</span>}
+        {saved && <span className="ml-2 text-green-600">Saved!</span>}
       </div>
       <h2 className="text-xl font-semibold">Users</h2>
       <ul className="list-disc pl-5">

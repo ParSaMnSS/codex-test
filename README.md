@@ -7,7 +7,6 @@ This repository contains a basic full stack example using **Next.js**, **React**
 - API routes for signing up and logging in users
 - An admin page that lists all users and allows toggling design options
 - A simple About page with a configurable red box
-- Optional modern styling that can be enabled or disabled by the admin
 - Shared navigation across pages
 
 ## Setup
@@ -31,14 +30,10 @@ npm install
 npm run dev
 ```
 
-Navigate to `http://localhost:3000` to see the site. The admin page lets you switch the red box and modern styling on or off for all users.
+Navigate to `http://localhost:3000` to see the site. The admin page lets you switch the red box on the About page on or off.
 
 To build the project for production use:
 
 ```bash
 npm run build
 ```
-
-The build step requires the dependencies installed with `npm install`.
-
-The database named in `DB_NAME` will be created automatically if it does not exist.
