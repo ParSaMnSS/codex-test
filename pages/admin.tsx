@@ -9,6 +9,7 @@ interface User {
 export default function Admin() {
   const [users, setUsers] = useState<User[]>([])
   const [showRedBox, setShowRedBox] = useState(false)
+  const [saved, setSaved] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
@@ -36,6 +37,7 @@ export default function Admin() {
     })
     if (res.ok) {
       setShowRedBox(newVal)
+      setSaved(true)
     }
   }
 
@@ -47,7 +49,9 @@ export default function Admin() {
           <input type="checkbox" checked={showRedBox} onChange={toggleRedBox} />
           <span>Show red box on About page</span>
         </label>
+        {saved && <span className="ml-2 text-green-600">Saved!</span>}
       </div>
+      <h2 className="text-xl font-semibold">Users</h2>
       <ul className="list-disc pl-5">
         {users.map((u) => (
           <li key={u.id}>{u.email}</li>

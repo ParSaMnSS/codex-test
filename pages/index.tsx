@@ -16,6 +16,9 @@ export default function Home() {
         This is a simple template for an about page. You can describe your
         company or project here.
       </p>
+      <p className="text-sm text-gray-600">
+        Use the navigation links above to sign up or log in.
+      </p>
       {showRedBox && (
         <div className="p-4 bg-red-500 text-white">This red box is configurable by the admin.</div>
       )}

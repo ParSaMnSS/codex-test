@@ -4,9 +4,11 @@ import Navbar from '../components/Navbar'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <Component {...pageProps} />
-    </>
+      <main className="flex-1 p-4">
+        <Component {...pageProps} />
+      </main>
+    </div>
   )
 }
