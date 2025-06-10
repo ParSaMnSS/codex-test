@@ -12,6 +12,12 @@ export default function Admin() {
   const [modern, setModern] = useState(true)
 
 
+  useEffect(() => {
+    if (!saved) return
+    const t = setTimeout(() => setSaved(false), 2000)
+    return () => clearTimeout(t)
+  }, [saved])
+
   const [saved, setSaved] = useState(false)
   const router = useRouter()
 
